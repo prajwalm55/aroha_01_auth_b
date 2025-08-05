@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// ✅ Register User with Role (admin or user)
 export const registerUser = async (req, res) => {
   try {
     const { name, email, mobile, password, role } = req.body;
@@ -109,6 +108,7 @@ export const getUserDetails = async (req, res) => {
     return res.status(500).json({ message: "Server error", error });
   }
 };
+
 
 // ✅ Logout
 export const logout = async (req, res) => {
