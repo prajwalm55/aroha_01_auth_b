@@ -85,20 +85,19 @@
 //     res.status(500).json({ message: 'Error deleting products' });
 //   }
 // };
-
-
+// controllers/ProductController.js
 import Stock from '../models/Product.js';
 
 // ✅ Add a Single Product
 export const addProduct = async (req, res) => {
   try {
-    const { name, size, style, category, price, quantity, color } = req.body;
+    const { name, size, style, category, price, quantity, image } = req.body;
 
-    if (!name || !size || !style || !category || !price || !quantity || !color) {
-      return res.status(400).json({ message: "All fields are required including style and color" });
+    if (!name || !size || !style || !category || !price || !quantity || !image) {
+      return res.status(400).json({ message: "All fields are required including style and image" });
     }
 
-    const newProduct = new Stock({ name, size, style, category, price, quantity, color });
+    const newProduct = new Stock({ name, size, style, category, price, quantity, image });
     await newProduct.save();
 
     res.status(201).json({ message: 'Product added successfully' });
@@ -121,12 +120,12 @@ export const addProducts = async (req, res) => {
           !p.size ||
           !p.style ||
           !p.category ||
-          !p.color ||
+          !p.image ||         // ✅ updated from color → image
           !p.price ||
           !p.quantity
       )
     ) {
-      return res.status(400).json({ message: 'All fields are required including style and color' });
+      return res.status(400).json({ message: 'All fields are required including style and image' });
     }
 
     await Stock.insertMany(products);
