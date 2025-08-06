@@ -1,10 +1,16 @@
 import express from 'express';
-import { saveCart } from '../controllers/ProductController.js';
-import isAuthenticated from '../middlewares/isAuthenticated.js';
+import {
+  addProduct,
+  getAllProducts,
+  addStyleToExistingProducts,
+  deleteAllProducts
+} from '../controllers/ProductController.js';
 
 const router = express.Router();
 
-// Route: POST /api/cart/save
-router.post('/cart/save', isAuthenticated, saveCart);
+router.post('/add', addProduct);       // ✅ Public POST
+router.get('/all', getAllProducts);    // ✅ Public GET
+router.put('/update-style', addStyleToExistingProducts);  // Optional
+router.delete('/delete-all', deleteAllProducts);          // DELETE /api/stocks/delete-all
 
 export default router;

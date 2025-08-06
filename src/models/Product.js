@@ -1,17 +1,46 @@
+// import mongoose from 'mongoose';
+
+// const productSchema = new mongoose.Schema({
+//   userId: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'User',
+//     required: true,
+//   },
+//   name: String,
+//   size: String,
+//   price: Number,
+//   quantity: Number,
+// });
+
+// // ✅ Collection will be named "stocks"
+// const Stock = mongoose.model('Stock', productSchema);
+
+// export default Stock;
+
+
+// import mongoose from 'mongoose';
+
+// const productSchema = new mongoose.Schema({
+//   name: { type: String, required: true },
+//   size: { type: String, required: true },
+//   price: { type: Number, required: true },
+//   quantity: { type: Number, required: true },
+// });
+
+// const Stock = mongoose.model('Stock', productSchema);
+// export default Stock;
 import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  name: String,
-  size: String,
-  price: Number,
-  quantity: Number
+  name: { type: String, required: true },
+  size: { type: String, required: true },
+  style: { type: String, required: true },
+  category: { type: String, required: true },
+  price: { type: Number, required: true },
+  quantity: { type: Number, required: true },
+  color: { type: String } // Optional
 });
 
-const Product = mongoose.model('Product', productSchema);
+const Stock = mongoose.model('Stock', productSchema);
 
-export default Product;
+export default Stock;
